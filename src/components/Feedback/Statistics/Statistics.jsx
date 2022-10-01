@@ -1,12 +1,10 @@
-import PropTypes from 'prop-types';
+import { useContext } from 'react';
+import { feedbackContext } from '../FeedbackContext/FeedbackContext';
 
-export const Statistics = ({
-  good,
-  neutral,
-  bad,
-  total,
-  positivePercentage,
-}) => {
+export const Statistics = () => {
+  const { good, neutral, bad, total, posFeedback } =
+    useContext(feedbackContext);
+
   return (
     <>
       <p>
@@ -22,16 +20,8 @@ export const Statistics = ({
         Total: <span>{total}</span>
       </p>
       <p>
-        Positive feedback: <span>{positivePercentage}</span>
+        Positive feedback: <span>{posFeedback}</span>
       </p>
     </>
   );
-};
-
-Statistics.propTypes = {
-  good: PropTypes.number.isRequired,
-  neutral: PropTypes.number.isRequired,
-  bad: PropTypes.number.isRequired,
-  total: PropTypes.number.isRequired,
-  positivePercentage: PropTypes.string.isRequired,
 };
